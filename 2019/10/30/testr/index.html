@@ -50,12 +50,14 @@
   };
 </script>
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="testr">
+  <meta name="description" content="#前提在购买完SSL证书并补全信息后，选择下载证书for Nginx。#配置1.使用nginx -t命令来获取 nginx.conf文件的路径2.将之前下载证书的zip文件解压，解压得到的xxx.pem 和xxx.key文件放到新建的目录cert下3.打开nginx.conf文件在最后一个}前添加一下语句 1234567891011121314151617server &amp;#123;    list">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx 配置HTTPS">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;testr&#x2F;index.html">
 <meta property="og:site_name" content="Hansybx&#39;s blog">
+<meta property="og:description" content="#前提在购买完SSL证书并补全信息后，选择下载证书for Nginx。#配置1.使用nginx -t命令来获取 nginx.conf文件的路径2.将之前下载证书的zip文件解压，解压得到的xxx.pem 和xxx.key文件放到新建的目录cert下3.打开nginx.conf文件在最后一个}前添加一下语句 1234567891011121314151617server &amp;#123;    list">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-30T07:01:57.606Z">
+<meta property="og:updated_time" content="2019-11-01T14:21:38.283Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2019/10/30/testr/">
@@ -72,7 +74,7 @@
   };
 </script>
 
-  <title>testr | Hansybx's blog</title>
+  <title>Nginx 配置HTTPS | Hansybx's blog</title>
   
 
 
@@ -201,7 +203,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          testr
+          Nginx 配置HTTPS
         </h1>
 
         <div class="post-meta">
@@ -210,10 +212,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-10-30 15:01:36 / Modified: 15:01:57" itemprop="dateCreated datePublished" datetime="2019-10-30T15:01:36+08:00">2019-10-30</time>
+              <time title="Created: 2019-10-30 15:01:36" itemprop="dateCreated datePublished" datetime="2019-10-30T15:01:36+08:00">2019-10-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-01 22:21:38" itemprop="dateModified" datetime="2019-11-01T22:21:38+08:00">2019-11-01</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -244,7 +252,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>#前提<br>在购买完SSL证书并补全信息后，选择下载证书for Nginx。<br>#配置<br>1.使用<code>nginx -t</code>命令来获取 nginx.conf文件的路径<br>2.将之前下载证书的zip文件解压，解压得到的xxx.pem 和xxx.key文件放到新建的目录cert下<br>3.打开nginx.conf文件在最后一个<code>}</code>前添加一下语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 443;</span><br><span class="line">    server_name localhost;</span><br><span class="line">    ssl on;</span><br><span class="line">    root html;</span><br><span class="line">    index index.html index.htm;</span><br><span class="line">    ssl_certificate   cert/xxx.pem;</span><br><span class="line">    ssl_certificate_key  cert/xxx.key;</span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line">    location / &#123;</span><br><span class="line">        root html;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.添加安全组规则<br>服务器一般情况下默认是不开放443端口的<br>应添加安全组规则，协议类型选择HTTPS(443)即可</p>
+<p>5.应用配置更改<br>使用<code>nginx -s reload</code>命令重启nginx服务即可</p>
+<p>6.日志查看<br><code>vi /var/log/nginx/error.log</code></p>
+<p>#我的异常解决<br>如果你没有找到上面内段的对应代码，可以重新下载，将里面的nginx.conf文件修改后替换之前的nginx.conf即可，方法如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 下载安装包到 src 目录</span><br><span class="line">$ cd /usr/local/src</span><br><span class="line">$ wget http://nginx.org/download/nginx-1.14.1.tar.gz</span><br><span class="line">#解压安装包。</span><br><span class="line">$ tar -zxvf nginx-1.14.1.tar.gz</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -265,6 +281,9 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+                <a href="/2019/11/13/Linux%20%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%8C%87%E5%8C%97/" rel="prev" title="Linux 系统安装指北">
+                  Linux 系统安装指北 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
       </footer>
@@ -317,7 +336,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
