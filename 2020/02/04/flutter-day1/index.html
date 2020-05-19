@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.2" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.2">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: true,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="成果演示： 前期准备：1.dio 用于发送http请求用法：  发起一个 GET 请求 :  1234567Response response;Dio dio = Dio();response = await dio.get(&quot;&#x2F;test?id=12&amp;amp;name=wendu&quot;)print(response.data.toString());&#x2F;&#x2F; 请求参数也可以通过对象传递，上面的代码等同于：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用flutter来构造自己的App Day1-登录逻辑">
+<meta property="og:url" content="http:&#x2F;&#x2F;hansybx.cn&#x2F;2020&#x2F;02&#x2F;04&#x2F;flutter-day1&#x2F;index.html">
+<meta property="og:site_name" content="Hansybx&#39;s blog">
+<meta property="og:description" content="成果演示： 前期准备：1.dio 用于发送http请求用法：  发起一个 GET 请求 :  1234567Response response;Dio dio = Dio();response = await dio.get(&quot;&#x2F;test?id=12&amp;amp;name=wendu&quot;)print(response.data.toString());&#x2F;&#x2F; 请求参数也可以通过对象传递，上面的代码等同于：">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;pic.downk.cc&#x2F;item&#x2F;5e3901722fb38b8c3c9d5b77.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;pic.downk.cc&#x2F;item&#x2F;5e3906d32fb38b8c3c9dfee8.png">
+<meta property="og:updated_time" content="2020-02-04T06:04:05.789Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;pic.downk.cc&#x2F;item&#x2F;5e3901722fb38b8c3c9d5b77.gif">
+
+<link rel="canonical" href="http://hansybx.cn/2020/02/04/flutter-day1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>使用flutter来构造自己的App Day1-登录逻辑 | Hansybx's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hansybx's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tech">
+
+    <a href="/categories/tech/" rel="section"><i class="fa fa-fw fa-anchor"></i>tech</a>
+
+  </li>
+        <li class="menu-item menu-item-life">
+
+    <a href="/categories/life/" rel="section"><i class="fa fa-fw fa-tree"></i>life</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-grav"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://hansybx.cn/2020/02/04/flutter-day1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hansybx">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hansybx's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用flutter来构造自己的App Day1-登录逻辑
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-04 12:55:21 / Modified: 14:04:05" itemprop="dateCreated datePublished" datetime="2020-02-04T12:55:21+08:00">2020-02-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tech/" itemprop="url" rel="index">
+                    <span itemprop="name">tech</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="成果演示："><a href="#成果演示：" class="headerlink" title="成果演示："></a>成果演示：</h2><p><img alt="演示Demo" data-src="https://pic.downk.cc/item/5e3901722fb38b8c3c9d5b77.gif"></p>
+<h1 id="前期准备："><a href="#前期准备：" class="headerlink" title="前期准备："></a>前期准备：</h1><h2 id="1-dio-用于发送http请求"><a href="#1-dio-用于发送http请求" class="headerlink" title="1.dio 用于发送http请求"></a>1.dio 用于发送http请求</h2><p>用法：</p>
+<p> 发起一个 <code>GET</code> 请求 : </p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Response response;</span><br><span class="line">Dio dio = Dio();</span><br><span class="line">response = <span class="keyword">await</span> dio.<span class="keyword">get</span>(<span class="string">"/test?id=12&amp;name=wendu"</span>)</span><br><span class="line"><span class="built_in">print</span>(response.data.toString());</span><br><span class="line"><span class="comment">// 请求参数也可以通过对象传递，上面的代码等同于：</span></span><br><span class="line">response = <span class="keyword">await</span> dio.<span class="keyword">get</span>(<span class="string">"/test"</span>, queryParameters: &#123;<span class="string">"id"</span>: <span class="number">12</span>, <span class="string">"name"</span>: <span class="string">"wendu"</span>&#125;);</span><br><span class="line"><span class="built_in">print</span>(response.data.toString());</span><br></pre></td></tr></table></figure>
+
+<p> 发起一个 <code>POST</code> 请求: </p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response = <span class="keyword">await</span> dio.post(<span class="string">"/test"</span>, data: &#123;<span class="string">"id"</span>: <span class="number">12</span>, <span class="string">"name"</span>: <span class="string">"wendu"</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p> 发送 FormData: </p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">FormData.fromMap(&#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"wendux"</span>,</span><br><span class="line">    <span class="string">"age"</span>: <span class="number">25</span>,</span><br><span class="line">    <span class="string">"file"</span>: <span class="keyword">await</span> MultipartFile.fromFile(<span class="string">"./text.txt"</span>,filename: <span class="string">"upload.txt"</span>),</span><br><span class="line">    <span class="string">"files"</span>: [</span><br><span class="line">      <span class="keyword">await</span> MultipartFile.fromFile(<span class="string">"./text1.txt"</span>, filename: <span class="string">"text1.txt"</span>),</span><br><span class="line">      <span class="keyword">await</span> MultipartFile.fromFile(<span class="string">"./text2.txt"</span>, filename: <span class="string">"text2.txt"</span>),</span><br><span class="line">    ]</span><br><span class="line"> &#125;);</span><br><span class="line">response = <span class="keyword">await</span> dio.post(<span class="string">"/info"</span>, data: formData);</span><br></pre></td></tr></table></figure>
+
+<p>更多实例请前往 <a href="https://github.com/flutterchina/dio/blob/master/README-ZH.md" target="_blank" rel="noopener">Dio Github样例</a></p>
+<h2 id="2-shared-preferences-用于本地数据共享"><a href="#2-shared-preferences-用于本地数据共享" class="headerlink" title="2.shared_preferences 用于本地数据共享"></a>2.shared_preferences 用于本地数据共享</h2><p>增：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SharedPreferences prefs = await SharedPreferences.getInstance();</span><br><span class="line">prefs.setString(key, value)</span><br><span class="line">prefs.setBool(key, value)</span><br><span class="line">prefs.setDouble(key, value)</span><br><span class="line">prefs.setInt(key, value)</span><br><span class="line">prefs.setStringList(key, value)</span><br></pre></td></tr></table></figure>
+
+<p>删：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SharedPreferences prefs = await SharedPreferences.getInstance();</span><br><span class="line">prefs.remove(key); //删除指定键</span><br><span class="line">prefs.clear();//清空键值对</span><br></pre></td></tr></table></figure>
+
+
+
+<p>改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">改和增是一样的，只需要再执行一次setXXX()方法即可覆盖之前的数据。</span><br></pre></td></tr></table></figure>
+
+
+
+<p>查：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SharedPreferences prefs = await SharedPreferences.getInstance();</span><br><span class="line">prefs.getString(key)</span><br><span class="line">prefs.getBool(key)</span><br><span class="line">prefs.getDouble(key)</span><br><span class="line">prefs.getInt(key)</span><br><span class="line">prefs.getStringList(key)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>ps:</p>
+<p>这些方法都是异步的，使用其查找数据时应当使用then()方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;void&gt; get()  async &#123;</span><br><span class="line">    print(&apos;1&apos;);</span><br><span class="line">    SharedPreferences pref = await SharedPreferences.getInstance();</span><br><span class="line">    flag = pref.getBool(key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">get().then((value)&#123;</span><br><span class="line">	//TODO</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><p><img alt="实现思路" data-src="https://pic.downk.cc/item/5e3906d32fb38b8c3c9dfee8.png"></p>
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// splashPage</span><br><span class="line">class SplashPage extends StatefulWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  _SplashPageState createState() =&gt; _SplashPageState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class _SplashPageState extends State&lt;SplashPage&gt; &#123;</span><br><span class="line">  bool flag;</span><br><span class="line">  Future&lt;void&gt; get()  async &#123;</span><br><span class="line">    SharedPreferences pref = await SharedPreferences.getInstance();</span><br><span class="line">    flag = pref.getBool(key);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  // 延时跳转</span><br><span class="line">  jumpPage() &#123;</span><br><span class="line">    return Timer(Duration(milliseconds: 100), () &#123;</span><br><span class="line">      get().then((value) &#123;</span><br><span class="line">        if(flag != null &amp;&amp; flag == true)&#123;</span><br><span class="line">          Navigator.pushReplacementNamed(context, &apos;/main&apos;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          Navigator.pushReplacementNamed(context, &apos;/login&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  @ override</span><br><span class="line">  void initState()  &#123;</span><br><span class="line">    super.initState();</span><br><span class="line">    jumpPage();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Container(</span><br><span class="line">      height: 200,</span><br><span class="line">      width: 200,</span><br><span class="line">      color: Colors.white,</span><br><span class="line">      child: Text(&quot;test&quot;),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//main.dart</span><br><span class="line">void main() =&gt; runApp(new MyApp());</span><br><span class="line"></span><br><span class="line">class MyApp extends StatelessWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return new MaterialApp(</span><br><span class="line">        title: &apos;Welcome to Flutter&apos;,</span><br><span class="line">        home: SplashPage(),</span><br><span class="line">        initialRoute: &apos;/&apos;,</span><br><span class="line">        routes: &#123;</span><br><span class="line">          &apos;/login&apos;:(context)=&gt; Login(),</span><br><span class="line">          &apos;/main&apos;:(context)=&gt; Tabs(),</span><br><span class="line">        &#125;,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//双击返回键退出</span><br><span class="line">@override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return WillPopScope(</span><br><span class="line">      onWillPop: () async &#123;</span><br><span class="line">        if (_lastPressedAt == null ||</span><br><span class="line">            DateTime.now().difference(_lastPressedAt) &gt; Duration(seconds: 1)) &#123;</span><br><span class="line">          //两次点击间隔超过1秒则重新计时</span><br><span class="line">          _lastPressedAt = DateTime.now();</span><br><span class="line">          return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return true;</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="需要注意的地方："><a href="#需要注意的地方：" class="headerlink" title="需要注意的地方："></a>需要注意的地方：</h2><p>由于在flutter中，路由导航是以栈的形式存放的，所以在 splash页进行跳转时应使用<strong>Navigator.pushReplacementNamed()</strong>方法来进行路由跳转，他会替换当前栈的元素，这样就可以防止双击返回键时不会返回到桌面。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/01/09/2019summary/" rel="next" title="我的2019">
+                  <i class="fa fa-chevron-left"></i> 我的2019
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#成果演示："><span class="nav-number">1.</span> <span class="nav-text">成果演示：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前期准备："><span class="nav-number"></span> <span class="nav-text">前期准备：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-dio-用于发送http请求"><span class="nav-number">1.</span> <span class="nav-text">1.dio 用于发送http请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-shared-preferences-用于本地数据共享"><span class="nav-number">2.</span> <span class="nav-text">2.shared_preferences 用于本地数据共享</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现思路"><span class="nav-number"></span> <span class="nav-text">实现思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现："><span class="nav-number">1.</span> <span class="nav-text">代码实现：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要注意的地方："><span class="nav-number">2.</span> <span class="nav-text">需要注意的地方：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+  <p class="site-author-name" itemprop="name">Hansybx</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Hansybx" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Hansybx" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/37e9e69cd517" title="简书 &amp;rarr; https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;37e9e69cd517" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>简书</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hansybx</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.2"></script><script src="/js/motion.js?v=7.4.2"></script>
+<script src="/js/schemes/muse.js?v=7.4.2"></script>
+<script src="/js/next-boot.js?v=7.4.2"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
