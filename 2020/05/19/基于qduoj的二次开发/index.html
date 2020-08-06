@@ -5,56 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.2">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.2">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.2">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.4.2" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=7.4.2">
+<link rel="stylesheet" href="/css/main.css">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.4.2',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: true,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hansybx.cn","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="部署操作步骤这个部分没什么特别要强调的，就是按照 QDUOJ部署上的方法跟着复制粘贴就好了，根本不用动脑子。 可能遇见的问题部署前由于在2020年一月后官方正式宣布放弃了对py2的维护，所以现在使用pip时会遇到一些小问题，以下是解决方法。 python3与pip3安装1234sudo add-apt-repository ppa:fkrull&#x2F;deadsnakessudo apt-get upd">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于qduoj的二次开发">
 <meta property="og:url" content="http:&#x2F;&#x2F;hansybx.cn&#x2F;2020&#x2F;05&#x2F;19&#x2F;%C2%96%E5%9F%BA%E4%BA%8Eqduoj%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91&#x2F;index.html">
-<meta property="og:site_name" content="Hansybx&#39;s blog">
+<meta property="og:site_name" content="Hansybx">
 <meta property="og:description" content="部署操作步骤这个部分没什么特别要强调的，就是按照 QDUOJ部署上的方法跟着复制粘贴就好了，根本不用动脑子。 可能遇见的问题部署前由于在2020年一月后官方正式宣布放弃了对py2的维护，所以现在使用pip时会遇到一些小问题，以下是解决方法。 python3与pip3安装1234sudo add-apt-repository ppa:fkrull&#x2F;deadsnakessudo apt-get upd">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;pic.downk.cc&#x2F;item&#x2F;5ec34d41c2a9a83be5751dc8.jpg">
@@ -69,17 +39,14 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
   };
 </script>
 
-  <title>基于qduoj的二次开发 | Hansybx's blog</title>
+  <title>基于qduoj的二次开发 | Hansybx</title>
   
-
-
 
 
 
@@ -117,17 +84,6 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hansybx's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
@@ -135,40 +91,58 @@
       <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hansybx</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
         <li class="menu-item menu-item-tech">
 
-    <a href="/categories/tech/" rel="section"><i class="fa fa-fw fa-anchor"></i>tech</a>
+    <a href="/categories/tech/" rel="section"><i class="fas fa-anchor fa-fw"></i>tech</a>
 
   </li>
         <li class="menu-item menu-item-life">
 
-    <a href="/categories/life/" rel="section"><i class="fa fa-fw fa-tree"></i>life</a>
+    <a href="/categories/life/" rel="section"><i class="fa fa-tree fa-fw"></i>life</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-grav"></i>About</a>
+    <a href="/about/" rel="section"><i class="fab fa-grav fa-fw"></i>About</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -184,14 +158,13 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://hansybx.cn/2020/05/19/%C2%96%E5%9F%BA%E4%BA%8Eqduoj%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -201,7 +174,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hansybx's blog">
+      <meta itemprop="name" content="Hansybx">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -211,7 +184,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
               
@@ -220,24 +193,15 @@
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tech/" itemprop="url" rel="index">
-                    <span itemprop="name">tech</span>
-                  </a>
+                  <a href="/categories/tech/" itemprop="url" rel="index"><span itemprop="name">tech</span></a>
                 </span>
             </span>
 
           
-            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
 
         </div>
       </header>
@@ -279,7 +243,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker tag [ImageId] registry.这里用阿里云给你提供的即可/oj-backend:[镜像版本号]</span><br><span class="line">sudo docker push registry.这里用阿里云给你提供的即可/oj-backend:[镜像版本号]</span><br></pre></td></tr></table></figure>
 <p>TAG就是上边需要写的版本号，还有IMAGE ID就是镜像ID。<br>然后就会开始push完毕就成功上传了。</p>
 <h3 id="使用Travis-CI-推送到docker仓库"><a href="#使用Travis-CI-推送到docker仓库" class="headerlink" title="使用Travis CI 推送到docker仓库"></a>使用Travis CI 推送到docker仓库</h3><p>Travis CI 是在软件开发领域中的一个在线的，分布式的持续集成服务，用来构建及测试在GitHub托管的代码。<br><a href="http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html" target="_blank" rel="noopener">阮一峰的Travis CI使用教程</a></p>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>1.使用Github账号在Travis CI登录<br>2.在more options中的setting设置自己的docker账号与密码<br>然后添加两个环境变量，这个用户名和密码和你的DockerHub账户是对应的：<br><code>DOCKER_USERNAME和DOCKER_PASSWORD</code><br><img alt data-src="https://pic.downk.cc/item/5ec34d41c2a9a83be5751dc8.jpg"><br>接着在Travis CI的script里写入</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>1.使用Github账号在Travis CI登录<br>2.在more options中的setting设置自己的docker账号与密码<br>然后添加两个环境变量，这个用户名和密码和你的DockerHub账户是对应的：<br><code>DOCKER_USERNAME和DOCKER_PASSWORD</code><br><img src="https://pic.downk.cc/item/5ec34d41c2a9a83be5751dc8.jpg" alt=""><br>接着在Travis CI的script里写入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">script:</span><br><span class="line">  - echo &quot;$DOCKER_PASSWORD&quot; | docker login -u &quot;$DOCKER_USERNAME&quot; --password-stdin</span><br><span class="line">  - docker build -t 用户名/包名:latest .</span><br><span class="line">  - docker push 用户名/包名:latest</span><br></pre></td></tr></table></figure>
 <p>通过使用<code>docker ps -a</code>来查看已经运行的镜像状态，<code>docker images</code>来查看本地已经存在的镜像。</p>
 <h4 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h4><p><a href="https://www.cnblogs.com/rope/archive/2020/02/23/12350607.html" target="_blank" rel="noopener">使用GitHub+Travis-CI+Docker打造自动化流水线</a><br><a href="https://blog.csdn.net/u010663021/article/details/70641879?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-11.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-11.nonecase" target="_blank" rel="noopener">Docker的使用–制作自己的镜像</a></p>
@@ -295,21 +259,18 @@
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-                <a href="/2020/02/04/flutter-day1/" rel="next" title="使用flutter来构造自己的App Day1-登录逻辑">
-                  <i class="fa fa-chevron-left"></i> 使用flutter来构造自己的App Day1-登录逻辑
-                </a>
-            </div>
 
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-                <a href="/2020/05/21/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91qduoj%E7%9A%84%E9%82%A3%E4%BA%9B%E5%A4%A9/" rel="prev" title="关于我二次开发qduoj的那些天">
-                  关于我二次开发qduoj的那些天 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/04/flutter-day1/" rel="prev" title="使用flutter来构造自己的App Day1-登录逻辑">
+      <i class="fa fa-chevron-left"></i> 使用flutter来构造自己的App Day1-登录逻辑
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/21/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91qduoj%E7%9A%84%E9%82%A3%E4%BA%9B%E5%A4%A9/" rel="next" title="关于我二次开发qduoj的那些天">
+      关于我二次开发qduoj的那些天 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
   </article>
@@ -317,11 +278,32 @@
   
   
 
-  </div>
 
 
           </div>
           
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
@@ -352,7 +334,6 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  
   <p class="site-author-name" itemprop="name">Hansybx</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -373,10 +354,10 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/Hansybx" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Hansybx" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/Hansybx" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Hansybx" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://www.jianshu.com/u/37e9e69cd517" title="简书 &amp;rarr; https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;37e9e69cd517" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>简书</a>
+        <a href="https://www.jianshu.com/u/37e9e69cd517" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;37e9e69cd517" rel="noopener" target="_blank"><i class="fas fa-book fa-fw"></i>简书</a>
       </span>
   </div>
 
@@ -396,37 +377,21 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 2019 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-snowflake-o"></i>
+    <i class="snowflake-o"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Hansybx</span>
 </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="Total Visitors">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="Total Views">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
 
 
 
@@ -435,23 +400,17 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
 
   
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.2"></script><script src="/js/motion.js?v=7.4.2"></script>
-<script src="/js/schemes/muse.js?v=7.4.2"></script>
-<script src="/js/next-boot.js?v=7.4.2"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
 
 
@@ -470,11 +429,6 @@
 
 
 
-
-
-
-
-  
 
   
 
