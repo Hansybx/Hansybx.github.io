@@ -6,6 +6,8 @@ node_js: 12.18.1
 cache:
   directories:
     - node_modules
+    
+os: windows
 
 # 指定博客源码分支，因人而异。hexo博客源码托管在独立repo则不用设置此项
 branches:
