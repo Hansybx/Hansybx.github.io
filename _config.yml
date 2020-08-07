@@ -92,4 +92,4 @@ deploy:
   type: git
   #respository: git@github.com:Hansybx/Hansybx.github.io.git
   repo: https://gh_token@github.com/Hansybx/Hansybx.github.io.git
-  branch: master
+  branch: gh-pages
