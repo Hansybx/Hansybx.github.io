@@ -31,6 +31,6 @@ deploy:
   github-token: $GH_Token
   keep-history: true
   on:
-    branch: master
+    branch: blog_hexo
   local-dir: public
 # End: Build LifeCycle
