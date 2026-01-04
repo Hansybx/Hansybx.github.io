@@ -27,15 +27,8 @@
     weight = 3
 
 [[socials]]
-    id = "twitter"
-    url = "https://twitter.com/hansybx"
-    icon = "twitter"
-    title = "Twitter"
+    id = "x"
+    url = "https://x.com/hansybx"
+    icon = "x"
+    title = "X"
     weight = 3
-
-# [[socials]]
-#     id = "telegram"
-#     url = "https://t.me/yixiuer"
-#     icon = "telegram"
-#     title = "Telegram"
-#     weight = 5
