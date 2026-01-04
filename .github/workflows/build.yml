@@ -17,6 +17,6 @@ jobs:
       env:
         DEPLOY_REPO: Hansybx/Hansybx.github.io
         DEPLOY_BRANCH: build
-        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        DEPLOY_KEY: ${{ secrets.macbook pro }}
         # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
         TZ: Asia/Shanghai
